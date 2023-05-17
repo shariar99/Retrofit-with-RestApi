@@ -1,45 +1,37 @@
 package com.example.restapiwithretrofit;
 
 public class postPojo {
-    private float userId;
-    private float id;
-    private String title;
-    private String body;
+    private String Title;
+    private String Runtime;
+    private String Poster;
 
-
-    // Getter Methods
-
-    public float getUserId() {
-        return userId;
-    }
-
-    public float getId() {
-        return id;
+    public postPojo(String title, String runtime, String poster) {
+        Title = title;
+        Runtime = runtime;
+        Poster = poster;
     }
 
     public String getTitle() {
-        return title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    // Setter Methods
-
-    public void setUserId(float userId) {
-        this.userId = userId;
-}
-
-    public void setId(float id) {
-        this.id = id;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public String getRuntime() {
+        return Runtime;
+    }
+
+    public void setRuntime(String runtime) {
+        Runtime = runtime;
+    }
+
+    public String getPoster() {
+        return Poster;
+    }
+
+    public void setPoster(String poster) {
+        Poster = poster;
     }
 }

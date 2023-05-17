@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -29,8 +32,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.CustomViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        holder.title.setText(dataList.get(position).getTitle());
-        holder.posts.setText(dataList.get(position).getBody());
+        Glide.with(context).load(dataList.get(position).getPoster()).into(holder.imageView);
+        holder.Title.setText(dataList.get(position).getTitle());
+        holder.Runtime.setText(dataList.get(position).getRuntime());
+
 
     }
 
@@ -41,12 +46,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.CustomViewHolder> {
 
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        TextView title , posts;
+        TextView Title , Runtime;
+        ImageView imageView;
         public CustomViewHolder( View itemView) {
 
             super(itemView);
-            title = itemView.findViewById(R.id.title);
-            posts = itemView.findViewById(R.id.dis);
+            Title = itemView.findViewById(R.id.title);
+            Runtime = itemView.findViewById(R.id.dis);
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }
