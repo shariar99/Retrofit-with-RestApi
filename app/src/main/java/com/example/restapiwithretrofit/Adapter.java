@@ -38,7 +38,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.CustomViewHolder> {
         Glide.with(context).load(dataList.get(position).getImage()).into(holder.imageView);
         holder.Title.setText(dataList.get(position).getTitle());
         holder.description.setText(dataList.get(position).getDescription());
-        holder.price.setText("Price: "+dataList.get(position).getPrice());
+        holder.price.setText("Price: "+dataList.get(position).getPrice()+" $");
         holder.rating.setText("Rating: "+dataList.get(position).getRating().getRate());
         holder.quantity.setText("Quantity: "+dataList.get(position).getRating().getCount());
         holder.itemView.setOnClickListener(new View.OnClickListener() {

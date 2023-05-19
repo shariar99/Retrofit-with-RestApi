@@ -44,7 +44,7 @@ public class DetailsActivity extends AppCompatActivity {
         Glide.with(this).load(imageUrl).into(imageView);
         Title.setText(itemTitle);
         description.setText(itemDescription);
-        price.setText("Price: "+itemPrice+"$");
+        price.setText("Price: "+itemPrice+" $");
         quantity.setText("Quantity: "+itemcount);
         rating.setText("Rating: "+itemrating);
     }
