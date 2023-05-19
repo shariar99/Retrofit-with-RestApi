@@ -1,6 +1,8 @@
 package com.example.restapiwithretrofit;
 
+import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +34,27 @@ public class Adapter extends RecyclerView.Adapter<Adapter.CustomViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        Glide.with(context).load(dataList.get(position).getPoster()).into(holder.imageView);
+        postPojo item = dataList.get(position);
+        Glide.with(context).load(dataList.get(position).getImage()).into(holder.imageView);
         holder.Title.setText(dataList.get(position).getTitle());
-        holder.Runtime.setText(dataList.get(position).getRuntime());
+        holder.description.setText(dataList.get(position).getDescription());
+        holder.price.setText("Price: "+dataList.get(position).getPrice());
+        holder.rating.setText("Rating: "+dataList.get(position).getRating().getRate());
+        holder.quantity.setText("Quantity: "+dataList.get(position).getRating().getCount());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+                intent.putExtra("image", item.getImage());
+                intent.putExtra("title", item.getTitle());
+                intent.putExtra("description", item.getDescription());
+                intent.putExtra("price", item.getPrice());
+                intent.putExtra("rate", item.getRating().getRate());
+                intent.putExtra("count", item.getRating().getCount());
+                view.getContext().startActivity(intent);
+            }
+        });
 
 
     }
@@ -46,14 +66,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.CustomViewHolder> {
 
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
-        TextView Title , Runtime;
+        TextView Title , description, rating, quantity ,price  ;
         ImageView imageView;
         public CustomViewHolder( View itemView) {
 
             super(itemView);
-            Title = itemView.findViewById(R.id.title);
-            Runtime = itemView.findViewById(R.id.dis);
-            imageView = itemView.findViewById(R.id.imageView);
+            Title = itemView.findViewById(R.id.product_title);
+            rating = itemView.findViewById(R.id.product_rating);
+            description = itemView.findViewById(R.id.product_description);
+            quantity = itemView.findViewById(R.id.product_quantity);
+            price = itemView.findViewById(R.id.product_price);
+            imageView = itemView.findViewById(R.id.product_image);
         }
     }
 }

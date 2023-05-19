@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitInstance {
 
     private static Retrofit retrofit;
-    private static final String BASEFUL = "https://my-json-server.typicode.com/horizon-code-academy/fake-movies-api/";
+    private static final String BASEFUL = "https://fakestoreapi.com/";
 
 
     public static Retrofit getRetrofit() {
