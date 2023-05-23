@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.List;
@@ -17,12 +19,14 @@ public class MainActivity extends AppCompatActivity {
 
     ApiInterface apiInterface;
     RecyclerView recyclerView;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycleView);
+        progressBar = findViewById(R.id.progressBar);
 
         apiInterface = RetrofitInstance.getRetrofit().create(ApiInterface.class);
         apiInterface.getposts().enqueue(new Callback<List<postPojo>>() {
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
                     recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setAdapter(adapter);
+                    progressBar.setVisibility(View.GONE);
 
                     Toast.makeText(MainActivity.this, "List is not empty", Toast.LENGTH_SHORT).show();
 
